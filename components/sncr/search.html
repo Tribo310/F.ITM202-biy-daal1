@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Men's Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-bar {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .main {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            margin: 10px 0;
+        }
+        .toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .toggle input {
+            width: 40px;
+            height: 20px;
+        }
+        .container {
+            flex-grow: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product h3 {
+            margin: 10px 0;
+        }
+        .product p {
+            font-size: 14px;
+            color: #666;
+        }
+        .product span {
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+        .search-results {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .search-results .product {
+            display: inline-block;
+            width: 200px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="nike-logo.png" alt="Nike Logo" width="50">
+        <input type="text" class="search-bar" placeholder="Search for products..." onkeyup="searchProducts()">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+    <div class="main">
+        <div class="sidebar">
+            <h2>Mens Clothing (1190)</h2>
+            <div class="toggle">
+                <span>Pick Up Today</span>
+                <input type="checkbox">
+            </div>
+            <hr>
+            <a href="#">Tops and T-Shirts</a>
+            <a href="#">Shorts</a>
+            <a href="#">Hoodies and Pullovers</a>
+            <a href="#">Jackets & Vests</a>
+            <a href="#">Pants and Tights</a>
+            <a href="#">Fleece</a>
+            <a href="#">Compression and Baselayer</a>
+            <a href="#">Tracksuits</a>
+            <a href="#">Underwear</a>
+            <a href="#">Swimwear</a>
+        </div>
+        <div class="container">
+            <h2>Men's Clothing</h2>
+            <div class="products" id="productList">
+                <div class="product" data-name="t-shirt">
+                    <img src="shirt.jpg" alt="Nike T-Shirt">
+                    <h3>Nike Sportswear T-Shirt</h3>
+                    <p>Soft and breathable cotton blend for all-day comfort.</p>
+                    <span>$25.00</span>
+                </div>
+                <div class="product" data-name="hoodie">
+                    <img src="hoodie.jpg" alt="Nike Hoodie">
+                    <h3>Nike Club Hoodie</h3>
+                    <p>Classic fit fleece hoodie with an adjustable hood.</p>
+                    <span>$60.00</span>
+                </div>
+                <div class="product" data-name="shorts">
+                    <img src="shorts.jpg" alt="Nike Shorts">
+                    <h3>Nike Dri-FIT Shorts</h3>
+                    <p>Lightweight fabric with moisture-wicking technology.</p>
+                    <span>$35.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function searchProducts() {
+            let input = document.querySelector('.search-bar').value.toLowerCase();
+            let results = document.getElementById('searchResults');
+            let products = document.querySelectorAll('.product');
+            results.innerHTML = '';
+            if (input.length > 0) {
+                results.style.display = 'block';
+                products.forEach(product => {
+                    let name = product.getAttribute('data-name');
+                    if (name.includes(input)) {
+                        results.appendChild(product.cloneNode(true));
+                    }
+                });
+            } else {
+                results.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
