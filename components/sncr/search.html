@@ -1,181 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nike Men's Section</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nike Store - Products</title>
+    <link rel="stylesheet" href="./style.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #000;
-            display: flex;
-            flex-direction: column;
-        }
-        .header {
-            padding: 10px 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .search-bar {
-            width: 300px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .main {
-            display: flex;
-        }
-        .sidebar {
-            width: 250px;
-            padding: 20px;
-            border-right: 1px solid #ddd;
-            height: 100vh;
-            overflow-y: auto;
-        }
-        .sidebar h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .sidebar a {
-            display: block;
-            text-decoration: none;
-            color: black;
-            margin: 10px 0;
-        }
-        .toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        .toggle input {
-            width: 40px;
-            height: 20px;
-        }
-        .container {
-            flex-grow: 1;
-            padding: 20px;
-            text-align: center;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .product {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .product img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .product h3 {
-            margin: 10px 0;
-        }
-        .product p {
-            font-size: 14px;
-            color: #666;
-        }
-        .product span {
-            font-weight: bold;
-            display: block;
-            margin-top: 5px;
-        }
-        .search-results {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            background: white;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        .search-results .product {
-            display: inline-block;
-            width: 200px;
-            margin-right: 10px;
-        }
+      :root {
+        --primary-color: #fff;
+        --secondary-color: #ccc;
+        --bg-color: #000;
+        --button-bg: #333;
+        --button-text-color: #fff;
+        --button-hover-bg: #555;
+        --button-padding: 0.75rem 1.5rem;
+        --button-border-radius: 30px;
+        --button-font-size: 1rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--primary-color);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+      }
+
+      .logo img {
+        height: 36px;
+        filter: sepia(1) saturate(5) brightness(0.8);
+      }
+
+      .search-bar input {
+        padding: 0.5rem 1rem;
+        border: 1px solid #555;
+        border-radius: 20px;
+        font-size: 1rem;
+        width: 240px;
+        background-color: #333;
+        color: #fff;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 1rem;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .container {
+        margin-top: 120px;
+        padding: 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .category-filter {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .category-filter button {
+        padding: var(--button-padding);
+        background-color: var(--button-bg);
+        color: var(--button-text-color);
+        border: none;
+        border-radius: var(--button-border-radius);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: var(--button-font-size);
+        font-weight: 600;
+      }
+
+      .category-filter button:hover {
+        background-color: var(--button-hover-bg);
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .product {
+        background-color: var(--bg-color);
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .product:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(255, 255, 255, 0.12);
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-bottom: 1px solid #444;
+      }
+
+      .product h3 {
+        font-size: 1.1rem;
+        margin: 1rem 0 0.5rem 0;
+        padding: 0 1rem;
+      }
+
+      .product p {
+        color: var(--primary-color);
+        font-weight: bold;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .add-to-cart-btn {
+        display: block;
+        margin: 0 1rem 1.25rem 1rem;
+        padding: var(--button-padding);
+        background-color: var(--button-bg);
+        color: var(--button-text-color);
+        border: none;
+        border-radius: var(--button-border-radius);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: var(--button-font-size);
+      }
+
+      .add-to-cart-btn:hover {
+        background-color: var(--button-hover-bg);
+      }
+
+      footer {
+        background-color: var(--bg-color);
+        padding: 2rem;
+        text-align: center;
+        color: var(--secondary-color);
+        border-top: 1px solid #444;
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      footer ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      #cart {
+        background: var(--bg-color);
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
+        margin-top: 2rem;
+      }
     </style>
-</head>
-<body>
-    <div class="header">
-        <img src="nike-logo.png" alt="Nike Logo" width="50">
-        <input type="text" class="search-bar" placeholder="Search for products..." onkeyup="searchProducts()">
-    </div>
-    <div class="search-results" id="searchResults"></div>
-    <div class="main">
-        <div class="sidebar">
-            <h2>Mens Clothing (1190)</h2>
-            <div class="toggle">
-                <span>Pick Up Today</span>
-                <input type="checkbox">
-            </div>
-            <hr>
-            <a href="#">Tops and T-Shirts</a>
-            <a href="#">Shorts</a>
-            <a href="#">Hoodies and Pullovers</a>
-            <a href="#">Jackets & Vests</a>
-            <a href="#">Pants and Tights</a>
-            <a href="#">Fleece</a>
-            <a href="#">Compression and Baselayer</a>
-            <a href="#">Tracksuits</a>
-            <a href="#">Underwear</a>
-            <a href="#">Swimwear</a>
-        </div>
-        <div class="container">
-            <h2>Men's Clothing</h2>
-            <div class="products" id="productList">
-                <div class="product" data-name="t-shirt">
-                    <img src="shirt.jpg" alt="Nike T-Shirt">
-                    <h3>Nike Sportswear T-Shirt</h3>
-                    <p>Soft and breathable cotton blend for all-day comfort.</p>
-                    <span>$25.00</span>
-                </div>
-                <div class="product" data-name="hoodie">
-                    <img src="hoodie.jpg" alt="Nike Hoodie">
-                    <h3>Nike Club Hoodie</h3>
-                    <p>Classic fit fleece hoodie with an adjustable hood.</p>
-                    <span>$60.00</span>
-                </div>
-                <div class="product" data-name="shorts">
-                    <img src="shorts.jpg" alt="Nike Shorts">
-                    <h3>Nike Dri-FIT Shorts</h3>
-                    <p>Lightweight fabric with moisture-wicking technology.</p>
-                    <span>$35.00</span>
-                </div>
-            </div>
-        </div>
-    </div>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
+          alt="Nike Logo"
+        />
+      </div>
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Search products..." />
+      </div>
+      <nav>
+        <a href="#" onclick="showCart()">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="category-filter">
+        <button onclick="filterCategory('all')">All</button>
+        <button onclick="filterCategory('Running')">Running</button>
+        <button onclick="filterCategory('Lifestyle')">Lifestyle</button>
+        <button onclick="filterCategory('Basketball')">Basketball</button>
+      </div>
+
+      <div class="products" id="product-list"></div>
+
+      <div id="cart" style="display:none;">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+      </div>
+    </main>
+
+    <footer>
+      <ul>
+        <li>&copy; 2025 Nike, Inc.</li>
+        <li><a href="#">Terms of Sale</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </footer>
+
     <script>
-        function searchProducts() {
-            let input = document.querySelector('.search-bar').value.toLowerCase();
-            let results = document.getElementById('searchResults');
-            let products = document.querySelectorAll('.product');
-            results.innerHTML = '';
-            if (input.length > 0) {
-                results.style.display = 'block';
-                products.forEach(product => {
-                    let name = product.getAttribute('data-name');
-                    if (name.includes(input)) {
-                        results.appendChild(product.cloneNode(true));
-                    }
-                });
-            } else {
-                results.style.display = 'none';
-            }
+      const products = [
+        {
+          id: 1,
+          name: 'Nike Air Zoom Pegasus',
+          price: 120,
+          category: 'Running',
+          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/e930934a-c830-46a6-a847-27c12075b121/air-zoom-pegasus-40-mens-road-running-shoes-L7vFdF.png'
+        },
+        {
+          id: 2,
+          name: 'Nike Air Force 1',
+          price: 90,
+          category: 'Lifestyle',
+          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/c0b1730d-9b45-4004-9c37-9c2d78a753c4/air-force-1-07-mens-shoes-jBrhbr.png'
+        },
+        {
+          id: 3,
+          name: 'Nike LeBron 20',
+          price: 200,
+          category: 'Basketball',
+          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/899f7bce-4267-46ff-a0e5-738a79c7c3d4/lebron-xx-basketball-shoes-Zjhqip.png'
+        },
+        {
+          id: 4,
+          name: 'Nike Revolution 6',
+          price: 65,
+          category: 'Running',
+          image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/3d93e857-4501-4b9e-b71e-c25e86caa2c0/revolution-6-next-nature-mens-road-running-shoes-2W9hnC.png'
         }
+      ];
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart-count').innerText = cart.length;
+      }
+
+      function renderProducts(filter = 'all') {
+        const productList = document.getElementById('product-list');
+        productList.innerHTML = '';
+        const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+        filtered.forEach(product => {
+          const div = document.createElement('div');
+          div.className = 'product';
+          div.innerHTML = `  
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>$${product.price}</p>
+            <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+          `;
+          productList.appendChild(div);
+        });
+      }
+
+      function addToCart(productId) {
+        const product = products.find(p => p.id === productId);
+        cart.push(product);
+        saveCart();
+      }
+
+      function showCart() {
+        const cartItemsList = document.getElementById('cart-items');
+        cartItemsList.innerHTML = '';
+        cart.forEach(item => {
+          const li = document.createElement('li');
+          li.innerText = `${item.name} - $${item.price}`;
+          cartItemsList.appendChild(li);
+        });
+        document.getElementById('cart').style.display = 'block';
+      }
+
+      function filterCategory(category) {
+        renderProducts(category);
+      }
+
+      renderProducts();
+      saveCart();
     </script>
-</body>
+  </body>
 </html>
