@@ -242,7 +242,7 @@
           <a href="#">Find a Store</a>
           <a href="#">Help</a>
           <a href="#">Join Us</a>
-          <a href="#">Sign In</a>
+          <a href="login.html">Sign In</a> <!-- Updated this line to link to login.html -->
         </div>
       </div>
     </nav>
@@ -379,13 +379,11 @@
       function showCart() {
         const cart = document.getElementById("cart");
         cart.style.display = cart.style.display === "none" ? "block" : "none";
-        updateCart();
       }
 
-      document.addEventListener("DOMContentLoaded", () => {
-        renderProducts(products);
-        updateCart();
-      });
+      // Initial render
+      renderProducts(products);
+      updateCart();
     </script>
   </body>
-</html
+</html>
