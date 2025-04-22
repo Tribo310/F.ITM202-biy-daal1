@@ -25,14 +25,13 @@ a {
   color: inherit;
   transition: opacity 0.3s ease;
 }
-
 .search-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9); /* Dark background */
+  background: rgba(0, 0, 0, 0.9); /* Хар фон */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,16 +68,8 @@ a {
   color: white;
   cursor: pointer;
 }
-
 a:hover {
   opacity: 0.8;
-}
-
-/* Navigation Bar */
-nav {
-  display: flex;
-  flex-direction: column;
-  background-color: black;
 }
 
 .top_bar_container {
@@ -98,11 +89,11 @@ nav {
 }
 
 /* .header_right a {
-  color: #fff;
-  padding: 0 20px 0 0;
-  border-right: 2px solid #fff;
-  font-size: 0.9rem;
-} */
+    color: #fff;
+    padding: 0 20px 0 0;
+    border-right: 2px solid #fff;
+    font-size: 0.9rem;
+  } */
 
 .header_right a:last-child {
   border-right: none;
@@ -139,7 +130,6 @@ header {
   display: flex;
   gap: 1.5rem;
 }
-
 .header_input {
   display: flex;
   align-items: center;
@@ -183,18 +173,14 @@ header {
   box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
   width: 250px;
 }
-
 header .toggle_btn {
   color: #fff;
 }
-
 .nav-favorites,
 .nav-bag-icon {
   display: inline-flex;
   padding: 0.5rem;
 }
-
-/* Footer */
 footer {
   background-color: #111;
   padding: 2rem 5%;
@@ -202,27 +188,20 @@ footer {
   flex-direction: column;
   gap: 2rem;
 }
-
 .main_footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 .sub_footer {
   display: flex;
 }
-
 .sub_footer ul {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   width: 100%;
   justify-content: space-between;
-}
-
-.main_div {
-  height: 1000px;
 }
 
 .footer-section {
@@ -253,7 +232,6 @@ footer {
 .footer-link:hover {
   color: #fff;
 }
-
 .search_section_button {
   display: flex;
   align-items: center;
@@ -263,17 +241,14 @@ footer {
   color: white;
   gap: 5px;
 }
-
 .summary_ul {
   border: 1px solid #fff;
   display: flex;
   flex-direction: column-reverse;
 }
-
 .toggle_btn {
   display: none;
 }
-
 .toggle_btn ul {
   list-style-type: none;
   justify-content: center;
@@ -282,7 +257,6 @@ footer {
   display: flex;
   flex-direction: row;
 }
-
 .toggle_li_btn {
   width: 30px;
   height: 30px;
@@ -294,19 +268,189 @@ footer {
   color: #fff;
   background-color: #1f1f21;
 }
-
 .toggle_li_btn:hover {
   background-color: #2e2e30;
 }
-
 .nike_logo {
   width: 60px;
   height: auto;
   margin: 0 10px 0 10px;
   padding: 0;
 }
+/* Main dropdown menu container */
+.dropdown-menu {
+  background-color: #1f1f21;
+  padding: 10px 10px;
+  z-index: 1000;
+  font-family: sans-serif;
+}
 
-/* Responsive Styles */
+.dropdown-menu ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+
+.dropdown-menu li > span {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.dropdown-menu li:hover > span {
+  color: #000;
+}
+
+/* Dropdown content box */
+.dropdown-content {
+  position: fixed;
+  top: 100px; /* header-аас доош байрлал */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  min-width: 800px;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+
+/* Show the dropdown when hovering */
+.dropdown-menu li:hover .dropdown-content {
+  display: flex;
+  gap: 40px;
+}
+
+/* Dropdown columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+.dropdown-column h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.dropdown-column a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  margin-bottom: 6px;
+  transition: color 0.2s ease;
+}
+
+.dropdown-column a:hover {
+  color: #000;
+}
+.main_div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow-x: auto; /* хэвтээ гүйлгэх боломжтой болгоно */
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+  scroll-behavior: smooth; /* гүйлгэх үед зөөлөн харагдуулна */
+}
+.main_div_img {
+  flex: 0 0 auto;
+  width: 300px; /* Зурагны өргөн */
+  height: 300px; /* Зурагны өндөр */
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.main_div_img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.main_div_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* General Container */
+.container {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Feature Div Layout */
+.feature_div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Sections */
+.feature_div section {
+  flex: 100px;
+  padding: 0 100px 0 100px;
+}
+
+/* Headings */
+.fea-heading {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Feature Items */
+.fea-item {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+.fea_shoes {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-direction: column;
+}
+/* Links */
+.fea-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #dbdbdb;
+  font-size: 0.95rem;
+}
+
+.fea-link:hover {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feature_div {
+    flex-direction: column;
+  }
+
+  .feature_div section {
+    width: 100%;
+  }
+}
+.header_bottom_midle a:hover {
+  color: #4285f4;
+}
+
 @media (max-width: 1024px) {
   .header_bottom_midle {
     gap: 1rem;
@@ -342,25 +486,20 @@ footer {
   .main_footer {
     flex-direction: column;
   }
-
   .footer-list {
     display: none;
     visibility: hidden;
   }
-
   .sub_footer ul {
     flex-direction: column;
     align-items: baseline;
   }
-
   .header_bottom_right {
     display: none;
   }
-
   .toggle_btn {
     display: block;
   }
-
   nav {
     display: none;
   }
@@ -384,20 +523,16 @@ footer {
   .header_bottom_right {
     gap: 1rem;
   }
-
   .toggle_btn ul {
     gap: 5px;
   }
-
   footer {
     font-size: 10px;
   }
-
   footer h1 {
     font-size: 10px;
   }
 }
-
 .topnav {
   background-color: #333;
   overflow: hidden;
@@ -421,16 +556,14 @@ footer {
   color: white;
 }
 
-/* Responsive Styles for Top Navigation */
+/* Responsive Styles */
 @media screen and (max-width: 600px) {
   .topnav a {
     display: none;
   }
-
   .topnav .icon {
     display: block;
   }
-
   .topnav.responsive a {
     display: block;
   }

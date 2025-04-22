@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nike Store - Products</title>
+    <link rel="stylesheet" href="./style2.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/logo-nike-4096.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      :root {
+        --primary-color: #fff;
+        --secondary-color: #ccc;
+        --bg-color: #000;
+        --button-bg: #333;
+        --button-text-color: #fff;
+        --button-hover-bg: #555;
+        --button-padding: 0.75rem 1.5rem;
+        --button-border-radius: 30px;
+        --button-font-size: 1rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--primary-color);
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .top_bar_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 2rem;
+        background-color: #111;
+        font-size: 0.9rem;
+      }
+
+      .header_left a img {
+        height: 20px;
+        margin-right: 1rem;
+        vertical-align: middle;
+        filter: invert(1);
+      }
+
+      .header_right a {
+        color: var(--primary-color);
+        margin-left: 1.25rem;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .header_right a:hover {
+        text-decoration: underline;
+      }
+
+      /* Sticky header */
+      header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+      }
+
+      .logo img {
+        height: 30px;
+        filter: invert(0.4) grayscale(0.8) brightness(0.6);
+      }
+
+      .search-bar input {
+        padding: 0.5rem 1rem;
+        border: 1px solid #555;
+        border-radius: 20px;
+        font-size: 1rem;
+        width: 240px;
+        background-color: #333;
+        color: #fff;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .container {
+        margin-top: 100px;
+        padding: 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Men label styling */
+      .men-label {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .men-label h2 {
+        font-size: 3rem;
+        font-weight: 600;
+        color: #222; /* Slightly brighter color */
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Added shadow */
+      }
+
+      .category-filter {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .category-filter button {
+        padding: var(--button-padding);
+        background-color: var(--button-bg);
+        color: var(--button-text-color);
+        border: none;
+        border-radius: var(--button-border-radius);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: var(--button-font-size);
+        font-weight: 600;
+      }
+
+      .category-filter button:hover {
+        background-color: var(--button-hover-bg);
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .product {
+        background-color: var(--bg-color);
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .product:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(255, 255, 255, 0.12);
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-bottom: 1px solid #444;
+      }
+
+      .product h3 {
+        font-size: 1.1rem;
+        margin: 1rem 0 0.5rem 0;
+        padding: 0 1rem;
+      }
+
+      .product p {
+        color: var(--primary-color);
+        font-weight: bold;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .add-to-cart-btn {
+        display: block;
+        margin: 0 1rem 1.25rem 1rem;
+        padding: var(--button-padding);
+        background-color: var(--button-bg);
+        color: var(--button-text-color);
+        border: none;
+        border-radius: var(--button-border-radius);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: var(--button-font-size);
+      }
+
+      .add-to-cart-btn:hover {
+        background-color: var(--button-hover-bg);
+      }
+
+      footer {
+        background-color: var(--bg-color);
+        padding: 2rem;
+        text-align: center;
+        color: var(--secondary-color);
+        border-top: 1px solid #444;
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      footer ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      #cart {
+        background: var(--bg-color);
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
+        margin-top: 2rem;
+      }
+
+      #cart ul {
+        list-style: none;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- TOP NAV WITH JORDAN & CONVERSE -->
+    <nav>
+      <div class="top_bar_container">
+        <div class="header_left">
+          <a href="#">
+            <img class="jordan_logo" src="../../assets/icons8-air-jordan.svg" alt="Air Jordan logo" />
+          </a>
+          <a href="#">
+            <img class="convers_logo" src="https://logohistory.net/wp-content/uploads/2023/07/Converse-Logo.png" alt="Converse logo" />
+          </a>
+        </div>
+        <div class="header_right">
+          <a href="#">Find a Store</a>
+          <a href="#">Help</a>
+          <a href="#">Join Us</a>
+          <a href="login.html">Sign In</a>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div class="logo">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
+          alt="Nike Logo"
+        />
+      </div>
+      
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search products..."
+          oninput="realTimeSearch()"
+        />
+      </div>
+      <nav>
+        <a href="#" onclick="showCart()">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Men label section -->
+      <div class="men-label">
+        <h2>Men</h2>
+      </div>
+
+      <!-- Category Filter Section -->
+      <div class="category-filter">
+        <button onclick="filterCategory('all')">All</button>
+        <button onclick="filterCategory('Running')">Running</button>
+        <button onclick="filterCategory('Lifestyle')">Lifestyle</button>
+        <button onclick="filterCategory('Basketball')">Basketball</button>
+      </div>
+
+      <div class="products" id="product-list"></div>
+
+      <div id="cart" style="display:none;">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <button onclick="clearCart()">Clear Cart</button>
+      </div>
+    </main>
+
+    <footer>
+      <ul>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+      </ul>
+    </footer>
+
+    <script>
+      const products = [
+        {
+          id: 1,
+          name: "Nike Air Zoom Pegasus 38 Men's Road Running Shoes",
+          category: "Running",
+          price: 120,
+          image: "../../assets/sanchir real 1.png",
+        },
+        {
+          id: 2,
+          name: "Nike Air Force 1 '07 LV8",
+          category: "Lifestyle",
+          price: 90,
+          image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/w8nn3h7ujltwuw2fx5pw/air-force-1-07-lv8-mens-shoes-2fvlv1.jpg",
+        },
+        {
+          id: 3,
+          name: "LeBron 19 Men's Basketball Shoes",
+          category: "Basketball",
+          price: 200,
+          image: "https://media.nike.com/r/q_90+_w_1320+_h_1320+_f_auto,q_auto:eco/jmxxguoqw6ffw3sm0zjr/lebron-19-mens-basketball-shoes-KQw6gq.jpg",
+        }
+      ];
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function displayProducts(productsToDisplay) {
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = "";
+        productsToDisplay.forEach((product) => {
+          const productElement = document.createElement("div");
+          productElement.classList.add("product");
+          productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" />
+            <h3>${product.name}</h3>
+            <p>$${product.price}</p>
+            <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+          `;
+          productList.appendChild(productElement);
+        });
+      }
+
+      function realTimeSearch() {
+        const query = document.getElementById("search").value.toLowerCase();
+        const filteredProducts = products.filter(product =>
+          product.name.toLowerCase().includes(query)
+        );
+        displayProducts(filteredProducts);
+      }
+
+      function addToCart(productId) {
+        const product = products.find((p) => p.id === productId);
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+      }
+
+      function updateCartCount() {
+        document.getElementById("cart-count").textContent = cart.length;
+      }
+
+      function showCart() {
+        const cartItems = document.getElementById("cart-items");
+        cartItems.innerHTML = "";
+        cart.forEach((item) => {
+          const cartItem = document.createElement("li");
+          cartItem.textContent = `${item.name} - $${item.price}`;
+          cartItems.appendChild(cartItem);
+        });
+        document.getElementById("cart").style.display = "block";
+      }
+
+      function filterCategory(category) {
+        const filteredProducts = category === 'all' 
+          ? products 
+          : products.filter(product => product.category === category);
+        displayProducts(filteredProducts);
+      }
+
+      function clearCart() {
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        document.getElementById("cart-items").innerHTML = '';
+      }
+
+      displayProducts(products); // Display all products initially
+      updateCartCount(); // Update cart count
+    </script>
+  </body>
+</html>

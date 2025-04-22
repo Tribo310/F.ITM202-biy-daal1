@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box; /* Хүрээ болон padding-ийг нийт хэмжээнд тооцох */
+}
+.login_frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: solid 5px;
+  border-radius: 20px;
+  padding: 40px;
+  margin: 60px;
+  box-sizing: border-box;
+  background-color: #2c3e50;
+}
+.input_section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.input_section h3 {
+  margin: 0;
+}
+.input_section input {
+  width: 300px;
+  height: 20px;
+  border-radius: 5px;
+}
+.login_btn {
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login_btn:hover {
+  background-color: #2980b9;
+}
+
+.login_btn:active {
+  transform: scale(0.98);
+}
