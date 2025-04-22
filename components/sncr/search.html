@@ -12,6 +12,10 @@
       href="../../assets/logo-nike-4096.png"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
       integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -38,7 +42,7 @@
       body {
         background-color: var(--bg-color);
         color: var(--primary-color);
-        font-family: Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
       }
@@ -106,11 +110,26 @@
       }
 
       .container {
-        margin-top: 100px; /* adjusted to remove extra space */
+        margin-top: 100px;
         padding: 2rem;
         max-width: 1200px;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      /* Men label styling */
+      .men-label {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .men-label h2 {
+        font-size: 3rem;
+        font-weight: 600;
+        color: #222; /* Slightly brighter color */
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Added shadow */
       }
 
       .category-filter {
@@ -223,6 +242,11 @@
         box-shadow: 0 8px 16px rgba(255, 255, 255, 0.05);
         margin-top: 2rem;
       }
+
+      #cart ul {
+        list-style: none;
+        padding: 0;
+      }
     </style>
   </head>
   <body>
@@ -242,7 +266,7 @@
           <a href="#">Find a Store</a>
           <a href="#">Help</a>
           <a href="#">Join Us</a>
-          <a href="login.html">Sign In</a> <!-- Updated this line to link to login.html -->
+          <a href="login.html">Sign In</a>
         </div>
       </div>
     </nav>
@@ -269,6 +293,12 @@
     </header>
 
     <main class="container">
+      <!-- Men label section -->
+      <div class="men-label">
+        <h2>Men</h2>
+      </div>
+
+      <!-- Category Filter Section -->
       <div class="category-filter">
         <button onclick="filterCategory('all')">All</button>
         <button onclick="filterCategory('Running')">Running</button>
@@ -281,15 +311,15 @@
       <div id="cart" style="display:none;">
         <h2>Your Cart</h2>
         <ul id="cart-items"></ul>
+        <button onclick="clearCart()">Clear Cart</button>
       </div>
     </main>
 
     <footer>
       <ul>
-        <li>&copy; 2025 Nike, Inc.</li>
-        <li><a href="#">Terms of Sale</a></li>
         <li><a href="#">Terms of Use</a></li>
         <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
       </ul>
     </footer>
 
@@ -297,93 +327,91 @@
       const products = [
         {
           id: 1,
-          name: "Nike Air Zoom Pegasus 38",
+          name: "Nike Air Zoom Pegasus 38 Men's Road Running Shoes",
           category: "Running",
           price: 120,
-          image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/6435f36f-9fda-47de-8d30-96f709dbe1be/air-zoom-pegasus-38-mens-road-running-shoes-9ZpnVw.png",
+          image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/xw5xhqb5gd3v2eyx5dzg/air-zoom-pegasus-38-mens-road-running-shoes-zHpdq9.jpg",
         },
         {
           id: 2,
-          name: "Nike Air Force 1 '07",
+          name: "Nike Air Force 1 '07 LV8",
           category: "Lifestyle",
-          price: 100,
-          image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/aa4cfb50-b1d3-4535-9c7f-eef15aecc1ff/air-force-1-07-mens-shoes-9TR0rT.png",
+          price: 90,
+          image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/w8nn3h7ujltwuw2fx5pw/air-force-1-07-lv8-mens-shoes-2fvlv1.jpg",
         },
         {
           id: 3,
-          name: "Nike KD 14",
+          name: "LeBron 19 Men's Basketball Shoes",
           category: "Basketball",
-          price: 160,
-          image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/cd6b7042-60c8-48e4-b6e4-df1abfb75c47/kd-14-basketball-shoes-FVrMZc.png",
-        },
+          price: 200,
+          image: "https://media.nike.com/r/q_90+_w_1320+_h_1320+_f_auto,q_auto:eco/jmxxguoqw6ffw3sm0zjr/lebron-19-mens-basketball-shoes-KQw6gq.jpg",
+        }
       ];
 
-      function renderProducts(productList) {
-        const productContainer = document.getElementById("product-list");
-        productContainer.innerHTML = ""; // Clear existing products
-        productList.forEach((product) => {
-          const productCard = document.createElement("div");
-          productCard.classList.add("product");
-          productCard.innerHTML = `
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function displayProducts(productsToDisplay) {
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = "";
+        productsToDisplay.forEach((product) => {
+          const productElement = document.createElement("div");
+          productElement.classList.add("product");
+          productElement.innerHTML = `
             <img src="${product.image}" alt="${product.name}" />
             <h3>${product.name}</h3>
             <p>$${product.price}</p>
             <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
           `;
-          productContainer.appendChild(productCard);
+          productList.appendChild(productElement);
         });
-      }
-
-      function filterCategory(category) {
-        const filteredProducts = category === "all" ? products : products.filter((product) => product.category === category);
-        renderProducts(filteredProducts);
       }
 
       function realTimeSearch() {
-        const searchInput = document.getElementById("search").value.toLowerCase(); // Get search input
-        const filteredProducts = products.filter(
-          (product) =>
-            product.name.toLowerCase().includes(searchInput) ||
-            product.category.toLowerCase().includes(searchInput)
+        const query = document.getElementById("search").value.toLowerCase();
+        const filteredProducts = products.filter(product =>
+          product.name.toLowerCase().includes(query)
         );
-        renderProducts(filteredProducts); // Render the filtered products
+        displayProducts(filteredProducts);
       }
 
       function addToCart(productId) {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const product = products.find((p) => p.id === productId);
-        if (product) {
-          cart.push(product);
-          localStorage.setItem("cart", JSON.stringify(cart));
-          updateCart();
-        }
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
       }
 
-      function updateCart() {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const cartCount = document.getElementById("cart-count");
-        cartCount.textContent = cart.length;
-        renderCart(cart);
-      }
-
-      function renderCart(cart) {
-        const cartItems = document.getElementById("cart-items");
-        cartItems.innerHTML = "";
-        cart.forEach((product) => {
-          const cartItem = document.createElement("li");
-          cartItem.textContent = `${product.name} - $${product.price}`;
-          cartItems.appendChild(cartItem);
-        });
+      function updateCartCount() {
+        document.getElementById("cart-count").textContent = cart.length;
       }
 
       function showCart() {
-        const cart = document.getElementById("cart");
-        cart.style.display = cart.style.display === "none" ? "block" : "none";
+        const cartItems = document.getElementById("cart-items");
+        cartItems.innerHTML = "";
+        cart.forEach((item) => {
+          const cartItem = document.createElement("li");
+          cartItem.textContent = `${item.name} - $${item.price}`;
+          cartItems.appendChild(cartItem);
+        });
+        document.getElementById("cart").style.display = "block";
       }
 
-      // Initial render
-      renderProducts(products);
-      updateCart();
+      function filterCategory(category) {
+        const filteredProducts = category === 'all' 
+          ? products 
+          : products.filter(product => product.category === category);
+        displayProducts(filteredProducts);
+      }
+
+      function clearCart() {
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        document.getElementById("cart-items").innerHTML = '';
+      }
+
+      displayProducts(products); // Display all products initially
+      updateCartCount(); // Update cart count
     </script>
   </body>
 </html>
