@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="./master.css" />
+    <link rel="stylesheet" href="./addItem.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -26,26 +26,20 @@
             >
           </li>
           <li>
-            <a href="../Order/order.html"
-              ><i class="fa-solid fa-users"></i> Захиалга</a
-            >
+            <a href="#"><i class="fa-solid fa-users"></i> Захиалга</a>
           </li>
           <li>
-            <a href="../Payment/payment.html"
-              ><i class="fa-solid fa-money-bill"></i>Төлбөр</a
-            >
+            <a href="#"><i class="fa-solid fa-gear"></i> Төлбөр</a>
           </li>
           <li>
-            <a href="../Message/message.html"
-              ><i class="fa-solid fa-envelope"></i> Messages</a
-            >
+            <a href="#"><i class="fa-solid fa-envelope"></i> Messages</a>
           </li>
         </ul>
       </aside>
 
       <div class="main-section">
         <header class="admin-header">
-          <h1></h1>
+          <h1>Dashboard</h1>
           <div class="admin-actions">
             <i class="fa-solid fa-bell"></i>
             <i class="fa-solid fa-user-circle"></i>
@@ -53,7 +47,30 @@
         </header>
 
         <main class="admin-content">
-          <p>Welcome, Admin. Here's your dashboard overview.</p>
+          <div class="form-container">
+            <h2>Бараа нэмэх</h2>
+            <form id="addItemForm">
+              <label for="name">Барааны нэр:</label>
+              <input type="text" id="name" name="name" required />
+
+              <label for="category">Ангилал:</label>
+              <select id="category" name="category" required>
+                <option value="">--Сонгох--</option>
+                <option value="shoes">Гутал</option>
+                <option value="shirts">Цамц</option>
+              </select>
+
+              <label for="price">Үнэ (₮):</label>
+              <input type="number" id="price" name="price" required />
+
+              <div class="form-buttons">
+                <button type="submit">Нэмэх</button>
+                <button type="button" onclick="window.history.back()">
+                  Буцах
+                </button>
+              </div>
+            </form>
+          </div>
         </main>
 
         <footer class="admin-footer">
@@ -62,6 +79,6 @@
       </div>
     </div>
 
-    <script src="./master.js"></script>
+    <script src="./addItem.js"></script>
   </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Login.css" />
+    <title>Admin Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login_frame">
+        <form
+          id="loginForm"
+          style="display: flex; flex-direction: column; gap: 15px"
+        >
+          <h1 style="color: white; margin-bottom: 10px">Admin Login</h1>
+
+          <div class="input_section">
+            <label for="login_name" style="color: white; margin-bottom: 5px"
+              >Username</label
+            >
+            <input type="text" name="login_name" id="login_name" required />
+          </div>
+
+          <div class="input_section">
+            <label for="login_password" style="color: white; margin-bottom: 5px"
+              >Password</label
+            >
+            <input
+              type="password"
+              name="login_password"
+              id="login_password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="login_btn">Log in</button>
+
+          <div style="text-align: right; margin-top: 5px">
+            <a href="#" style="color: #3498db; text-decoration: none"
+              >Forgot Password?</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="./Login.js"></script>
+  </body>
+</html>
