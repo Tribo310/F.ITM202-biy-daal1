@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./addItem.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="admin-container">
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <i class="fa-solid fa-user-shield"></i> Admin Panel
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="../Admin/admin.html"
+              ><i class="fa-solid fa-box"></i> Бараа</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-users"></i> Захиалга</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-gear"></i> Төлбөр</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-envelope"></i> Messages</a>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="main-section">
+        <header class="admin-header">
+          <h1>Dashboard</h1>
+          <div class="admin-actions">
+            <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-user-circle"></i>
+          </div>
+        </header>
+
+        <main class="admin-content">
+          <div class="form-container">
+            <h2>Мессеж нэмэх</h2>
+            <form id="addItemForm">
+              <label for="name">Мэдээ:</label>
+              <input type="text" id="name" name="name" required />
+
+              <label for="category">Ангилал:</label>
+              <select id="category" name="category" required>
+                <option value="">--Сонгох--</option>
+                <option value="shoes">Урамжуулал</option>
+                <option value="shirts">Арга хэмжээ</option>
+              </select>
+
+              <div class="form-buttons">
+                <button type="submit">Нэмэх</button>
+                <button type="button" onclick="window.history.back()">
+                  Буцах
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+
+        <footer class="admin-footer">
+          <p>&copy; 2025 Online Shop Admin.</p>
+        </footer>
+      </div>
+    </div>
+
+    <script src="./addItem.js"></script>
+  </body>
+</html>
