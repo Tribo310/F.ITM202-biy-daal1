@@ -53,7 +53,43 @@
         </header>
 
         <main class="admin-content">
-          <p>message</p>
+          <h2 class="section-title">Мессэж</h2>
+          <div class="category-section">
+            <div class="dropdown">
+              <button class="dropdown-button" onclick="toggleDropdown()">
+                Ангилал ▼
+              </button>
+              <div id="dropdown-menu" class="dropdown-menu">
+                <div class="dropdown-category" onclick="filterItems('Гутал')">
+                  Урамшуулал
+                </div>
+                <div class="dropdown-category" onclick="filterItems('Цамц')">
+                  Арга хэмжээ
+                </div>
+              </div>
+            </div>
+            <button
+              class="add-button"
+              onclick="window.location.href = '../AddItem/additem.html'"
+            >
+              Нэмэх
+            </button>
+          </div>
+
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th>Нэр</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="itemTableBody">
+                <!-- Dynamic items will be inserted here -->
+              </tbody>
+            </table>
+          </div>
         </main>
 
         <footer class="admin-footer">
@@ -62,6 +98,6 @@
       </div>
     </div>
 
-    <script src="./master.js"></script>
+    <script src="./message.js"></script>
   </body>
 </html>

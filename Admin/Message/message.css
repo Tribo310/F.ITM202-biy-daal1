@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -88,8 +89,66 @@ body {
 .admin-content {
   flex: 1;
   padding: 2rem;
+  background-color: #f9fafc;
 }
 
+/* Main Section Enhancements */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.category-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.add-button {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: #16a085;
+}
+
+/* Table Card Style */
+.table-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+table th {
+  background-color: #f9f9f9;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Footer */
 .admin-footer {
   background-color: #fff;
   padding: 1rem;
@@ -97,6 +156,72 @@ body {
   border-top: 1px solid #ddd;
   font-size: 0.9rem;
   color: #777;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  z-index: 10;
+  margin-top: 5px;
+}
+
+.dropdown-category {
+  padding: 10px;
+  font-weight: bold;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Action Buttons */
+.action-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 16px;
+}
+
+.edit-icon::before {
+  content: "\f044";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #007bff;
+}
+
+.delete-icon::before {
+  content: "\f1f8";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #dc3545;
 }
 
 /* Responsive */
@@ -120,5 +245,10 @@ body {
 
   .main-section {
     flex: none;
+  }
+
+  .category-section {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
