@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nike Login Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .login-container {
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .logo {
+        display: block;
+        margin: 0 auto 24px;
+        width: 150px;
+      }
+
+      .login-container h2 {
+        text-align: center;
+        margin-bottom: 24px;
+        font-size: 24px;
+        color: #111;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: #555;
+        font-size: 14px;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        border-color: #000;
+      }
+
+      .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        margin-bottom: 16px;
+      }
+
+      .options a {
+        color: #000;
+        text-decoration: none;
+      }
+
+      .options a:hover {
+        text-decoration: underline;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background: #000;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #333;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #ccc;
+      }
+
+      .divider span {
+        margin: 0 12px;
+        color: #888;
+        font-size: 13px;
+      }
+
+      .social-btn {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .social-btn img {
+        width: 20px;
+        margin-right: 8px;
+      }
+
+      .social-btn:hover {
+        background: #f9f9f9;
+      }
+
+      .signup {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 13px;
+      }
+
+      .signup a {
+        color: #000;
+        text-decoration: none;
+      }
+
+      .signup a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
+        alt="Nike Logo"
+        class="logo"
+      />
+      <h2>Nike Member Sign In</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="login_name">Email address</label>
+          <input
+            type="email"
+            id="login_name"
+            autocomplete="username"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="login_password">Password</label>
+          <input
+            type="password"
+            id="login_password"
+            autocomplete="current-password"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn">Sign In</button>
+      </form>
+
+      <div class="divider"><span>or</span></div>
+
+      <button class="social-btn">
+        <img
+          src="https://www.svgrepo.com/show/355037/google.svg"
+          alt="Google"
+        />
+        Sign in with Google
+      </button>
+
+      <div class="signup">Not a member? <a href="#">Join Us</a></div>
+    </div>
+    <script src="./login.js"></script>
+  </body>
+</html>
