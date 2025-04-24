@@ -39,3 +39,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+  const colorOptions = document.querySelectorAll('.color-option');
+
+  colorOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      // Хуучин active class-тай зургуудыг цэвэрлэх
+      colorOptions.forEach(img => img.classList.remove('active'));
+
+      // Шинэ сонгогдсон зурагт active class нэмэх
+      option.classList.add('active');
+    });
+  });
+
+  document.querySelector('.add-to-bag-btn').addEventListener('click', () => {
+    window.location.href = 'sags.html'; // "cart.html" руу шилжинэ
+  });
+
+  
+  const thumbnails = document.querySelectorAll('.thumbnails img');
+  const mainImage = document.querySelector('.main-image');
+
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      // Том зургийг сонгосон жижиг зургийн src-тай тэнцүү болгоно
+      mainImage.src = thumb.src;
+
+      // Active class-ыг өмнөхөөс авж, шинээр нэмж өгнө
+      thumbnails.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+
+
+
