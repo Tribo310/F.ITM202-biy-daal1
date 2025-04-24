@@ -73,6 +73,7 @@ a:hover {
 }
 
 /* Navigation Bar */
+
 nav {
   display: flex;
   flex-direction: column;
