@@ -329,8 +329,8 @@
   .main_div_img{
     display: inline-block;
     flex: 0 0 auto;
-    width: 200px; 
-    height: 220px; 
+    width: 230px; 
+    height: 250px; 
     text-align: left;
     flex-direction: column;
   }

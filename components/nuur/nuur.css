@@ -277,89 +277,9 @@ footer {
   margin: 0 10px 0 10px;
   padding: 0;
 }
-/* Main dropdown menu container */
-.dropdown-menu {
-  background-color: #1f1f21;
-  padding: 10px 10px;
-  z-index: 1000;
-  font-family: sans-serif;
-}
-
-.dropdown-menu ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-
-.dropdown-menu li {
-  position: relative;
-}
-
-.dropdown-menu li > span {
-  cursor: pointer;
-  font-weight: bold;
-  padding: 10px 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: transparent;
-  border-radius: 4px;
-}
-
-.dropdown-menu li:hover > span {
-  color: #000;
-}
-
-/* Dropdown content box */
-.dropdown-content {
-  position: fixed;
-  top: 100px; /* header-аас доош байрлал */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgb(0, 0, 0);
-  padding: 20px;
-  z-index: 999;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  display: none;
-  min-width: 800px;
-}
-
-.dropdown-menu li {
-  position: relative;
-}
-
-/* Show the dropdown when hovering */
-.dropdown-menu li:hover .dropdown-content {
-  display: flex;
-  gap: 40px;
-}
-
-/* Dropdown columns */
-.dropdown-column {
-  display: flex;
-  flex-direction: column;
-  min-width: 150px;
-}
-
-.dropdown-column h4 {
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.dropdown-column a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 13px;
-  margin-bottom: 6px;
-  transition: color 0.2s ease;
-}
-
-.dropdown-column a:hover {
-  color: #000;
-}
 .main_div {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; 
   width: 100%;
   overflow-x: auto; /* хэвтээ гүйлгэх боломжтой болгоно */
   align-items: center;
