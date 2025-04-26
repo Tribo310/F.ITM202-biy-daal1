@@ -3,152 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Make Payment - Nike Style</title>
-    <link rel="stylesheet" href="./style23.css" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/logo-nike-4096.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-      :root {
-        --primary-color: #fff;
-        --secondary-color: #ccc;
-        --bg-color: #000;
-        --button-bg: #333;
-        --button-text-color: #fff;
-        --button-hover-bg: #555;
-        --button-padding: 0.75rem 1.5rem;
-        --button-border-radius: 30px;
-        --button-font-size: 1rem;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--primary-color);
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-
-      header {
-        position: sticky;
-        top: 0;
-        width: 100%;
-        background-color: var(--bg-color);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-        z-index: 1000;
-      }
-
-      .logo img {
-        height: 30px;
-        filter: invert(0.4) grayscale(0.8) brightness(0.6);
-      }
-
-      nav ul {
-        list-style: none;
-        display: flex;
-        gap: 1.5rem;
-      }
-
-      nav a {
-        text-decoration: none;
-        color: var(--primary-color);
-        font-weight: bold;
-      }
-
-      .payment-container {
-        max-width: 600px;
-        margin: 4rem auto;
-        background-color: #111;
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
-      }
-
-      .payment-container h1 {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .payment-form {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .payment-form label {
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-      }
-
-      .payment-form input,
-      .payment-form textarea {
-        padding: 0.75rem;
-        margin-bottom: 1.5rem;
-        border: none;
-        border-radius: 12px;
-        background-color: #222;
-        color: #fff;
-        font-size: 1rem;
-      }
-
-      .pay-button {
-        background-color: var(--button-bg);
-        color: var(--button-text-color);
-        padding: var(--button-padding);
-        border: none;
-        border-radius: var(--button-border-radius);
-        font-size: var(--button-font-size);
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .pay-button:hover {
-        background-color: var(--button-hover-bg);
-      }
-
-      footer {
-        background-color: var(--bg-color);
-        padding: 2rem;
-        text-align: center;
-        color: var(--secondary-color);
-        border-top: 1px solid #444;
-        font-size: 0.9rem;
-      }
-
-      footer a {
-        color: var(--secondary-color);
-        text-decoration: none;
-      }
-
-      footer ul {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-      }
-    </style>
+    <link rel="stylesheet" href="style23.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/logo-nike-4096.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Master</title>
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike">
+    <nav>
+      <div class="top_bar_container">
+        <div class="header_left">
+          <a href="#">
+            <img
+              class="jordan_logo"
+              src="../../assets/icons8-air-jordan.svg"
+              alt="Air Jordan logo"
+            />
+          </a>
+          <a href="#">
+            <img
+              class="convers_logo"
+              src="https://logohistory.net/wp-content/uploads/2023/07/Converse-Logo.png"
+              alt="Converse logo"
+            />
+          </a>
+        </div>
+        <div class="header_right">
+          <a href="#">Find a Store</a>
+          <span></span>
+          <a href="/components/Help/help.html">Help</a><span></span> <a href="#">Join us</a><span></span>
+          <a href="#">Sign In</a>
+        </div>
       </div>
-      <nav>
-        <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="search.html">Search</a></li>
-          <li><a href="cart.html">Cart</a></li>
+    </nav>
+
+    <header>
+      <a href="../nuur/nuur.html">
+        <img
+          class="nike_logo"
+          alt="Nike logo"
+          width="200"
+          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+PHBhdGggZmlsbD0iI2I0YTU5NiIgZD0iTTYuNDA2IDE2LjgwOEMzLjE1MiAyMC42MjEgMCAyNS4yMzQgMCAyOC45MDJDMCAzMS4wMiAxLjc4MSAzMy45OTYgNi4xMzMgMzMuOTk2QzguNDg0IDMzLjk5NiAxMC44MiAzMy4wNTEgMTIuNjQ4IDMyLjMyQzE1LjczIDMxLjA4NiA0OS43ODkgMTYuMjk3IDQ5Ljc4OSAxNi4yOTdDNTAuMTE3IDE2LjEzMyA1MC4wNTkgMTUuOTI2IDQ5LjY0NSAxNi4wMjdDNDkuNDgxIDE2LjA3IDEyLjU2NiAyNi4wNzQgMTIuNTY2IDI2LjA3NEMxMS44NTUgMjYuMjczIDExLjEyOSAyNi4zODMgMTAuNDIyIDI2LjM4M0M3LjIzIDI2LjM4MyA1LjA3OCAyNC44NTIgNS4wNzggMjEuNTAzQzUuMDc4IDIwLjIwNyA1LjQ4NCAxOC42NDEgNi40MDYgMTYuODA4WiIvPjwvc3ZnPg=="
+        />
+      </a>
+      <div class="header_bottom_midle">
+        <a href="../Search/searchnew.html">New and Featured</a>
+        <a href="../Search/search.html">Men</a>
+        <a href="../Search/searchwomen.html">Women</a>
+        <a href="../Search/searchkids.html">Kids</a>
+      
+      </div>
+      <div class="header_bottom_right">
+        <div class="header_input">
+          <span
+            ><svg
+              aria-hidden="true"
+              focusable="false"
+              viewBox="0 0 24 24"
+              role="img"
+              width="24px"
+              height="24px"
+              fill="none"
+            >
+              <path
+                stroke="currentColor"
+                stroke-width="1.5"
+                d="M13.962 16.296a6.716 6.716 0 01-3.462.954 6.728 6.728 0 01-4.773-1.977A6.728 6.728 0 013.75 10.5c0-1.864.755-3.551 1.977-4.773A6.728 6.728 0 0110.5 3.75c1.864 0 3.551.755 4.773 1.977A6.728 6.728 0 0117.25 10.5a6.726 6.726 0 01-.921 3.407c-.517.882-.434 1.988.289 2.711l3.853 3.853"
+              ></path></svg>
+          ></span>
+          <input class="search_input" type="text" placeholder="Search" />
+        </div>
+        <button class="toggle_li_btn">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="toggle_li_btn">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </button>
+      </div>
+      <div class="toggle_btn">
+        <ul class="toglle_ul">
+          <li class="toggle_li">
+            <button class="toggle_li_btn" id="toggle_li_btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </li>
+          <li class="toggle_li">
+            <button class="toggle_li_btn">
+              <i class="fa-regular fa-user"></i>
+            </button>
+          </li>
+          <li class="toggle_li">
+            <button class="toggle_li_btn">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </li>
+          <li class="toggle_li">
+            <button class="toggle_li_btn" id="slideNav">
+              <i class="fa-solid fa-bars"></i>
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+              </a>
+            </button>
+          </li>
         </ul>
-      </nav>
+      </div>
     </header>
 
     <section class="payment-container">
