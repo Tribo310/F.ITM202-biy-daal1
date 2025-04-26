@@ -13,8 +13,8 @@ html {
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
-  background-color: #fff;
-  color: #000;
+  color: #fff;
+  background-color: #000;
 }
 
 a {
@@ -25,14 +25,13 @@ a {
   color: inherit;
   transition: opacity 0.3s ease;
 }
-
 .search-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9); /* Dark background */
+  background: rgba(0, 0, 0, 0.9); /* Хар фон */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,16 +68,16 @@ a {
   color: white;
   cursor: pointer;
 }
-
 a:hover {
   opacity: 0.8;
 }
 
 /* Navigation Bar */
+
 nav {
   display: flex;
   flex-direction: column;
-  background-color: #333;
+  background-color: black;
 }
 
 .top_bar_container {
@@ -97,8 +96,20 @@ nav {
   gap: 1.5rem;
 }
 
+/* .header_right a {
+  color: #fff;
+  padding: 0 20px 0 0;
+  border-right: 2px solid #fff;
+  font-size: 0.9rem;
+} */
+
+.header_right a:last-child {
+  border-right: none;
+}
+
 .jordan_logo,
 .convers_logo {
+  filter: brightness(0) invert(1);
   height: auto;
   object-fit: contain;
 }
@@ -117,7 +128,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
-  background-color: #f1f1f1;
+  background-color: #1f1f21;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -127,14 +138,13 @@ header {
   display: flex;
   gap: 1.5rem;
 }
-
 .header_input {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 50px;
-  padding: 0 10px;
+  padding: 0 10px 0 10px;
 }
 
 .header_bottom_midle a {
@@ -154,7 +164,7 @@ header {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   color: #333;
-  background-color: #fff;
+  background-color: #000;
   border: none;
   border-radius: 25px;
   outline: none;
@@ -171,32 +181,38 @@ header {
   box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
   width: 250px;
 }
-
-/* Footer */
+header .toggle_btn {
+  color: #fff;
+}
+.nav-favorites,
+.nav-bag-icon {
+  display: inline-flex;
+  padding: 0.5rem;
+}
 footer {
-  background-color: #f9f9f9;
+  background-color: #111;
   padding: 2rem 5%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-
 .main_footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 .sub_footer {
   display: flex;
 }
-
 .sub_footer ul {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   width: 100%;
   justify-content: space-between;
+}
+.main_div {
+  height: 1000px;
 }
 
 .footer-section {
@@ -208,7 +224,7 @@ footer {
 .footer-heading {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #000;
+  color: #fff;
 }
 
 .footer-list {
@@ -220,116 +236,139 @@ footer {
 }
 
 .footer-link {
-  color: #333;
+  color: #ccc;
   justify-content: flex-start;
 }
 
 .footer-link:hover {
-  color: #000;
+  color: #fff;
 }
-
-/* Search Section Button */
 .search_section_button {
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border: none;
-  color: black;
+  color: white;
   gap: 5px;
 }
-
 .summary_ul {
-  border: 1px solid #000;
+  border: 1px solid #fff;
   display: flex;
   flex-direction: column-reverse;
 }
-
-/* Responsive Styles */
+.toggle_btn {
+  display: none;
+}
+.toggle_btn ul {
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.toggle_li_btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  background-color: #1f1f21;
+}
+.toggle_li_btn:hover {
+  background-color: #2e2e30;
+}
+.nike_logo {
+  width: 60px;
+  height: auto;
+  margin: 0 10px 0 10px;
+  padding: 0;
+}
 @media (max-width: 1024px) {
   .header_bottom_midle {
-      gap: 1rem;
+    gap: 1rem;
   }
 
   .header_bottom_midle a {
-      font-size: 0.85rem;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 820px) {
   html {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   .top_bar_container,
   header {
-      padding: 10px 3%;
+    padding: 10px 3%;
   }
 
   .header_bottom_midle {
-      display: none;
+    display: none;
   }
 
   .search_input {
-      width: 100px;
+    width: 100px;
   }
 
   .search_input:focus {
-      width: 180px;
+    width: 180px;
   }
-
   .main_footer {
-      flex-direction: column;
+    flex-direction: column;
   }
-
   .footer-list {
-      display: none;
-      visibility: hidden;
+    display: none;
+    visibility: hidden;
   }
-
   .sub_footer ul {
-      flex-direction: column;
-      align-items: baseline;
+    flex-direction: column;
+    align-items: baseline;
   }
-
   .header_bottom_right {
-      display: none;
+    display: none;
+  }
+  .toggle_btn {
+    display: block;
+  }
+  nav {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .header_right a {
-      font-size: 0.8rem;
-      padding: 0 0.3rem;
+    font-size: 0.8rem;
+    padding: 0 0.3rem;
   }
 
   .header_left,
   .header_right {
-      gap: 1rem;
+    gap: 1rem;
   }
 
   .search_input {
-      display: none;
+    display: none;
   }
 
   .header_bottom_right {
-      gap: 1rem;
+    gap: 1rem;
   }
-
   .toggle_btn ul {
-      gap: 5px;
+    gap: 5px;
   }
-
   footer {
-      font-size: 10px;
+    font-size: 10px;
   }
-
   footer h1 {
-      font-size: 10px;
+    font-size: 10px;
   }
 }
-
-/* Top Navigation */
 .topnav {
   background-color: #333;
   overflow: hidden;
@@ -356,12 +395,12 @@ footer {
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
   .topnav a {
-      display: none;
+    display: none;
   }
   .topnav .icon {
-      display: block;
+    display: block;
   }
   .topnav.responsive a {
-      display: block;
+    display: block;
   }
 }
