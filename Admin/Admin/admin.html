@@ -12,6 +12,124 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <style>
+      /* Additional CSS for images */
+      .item-image {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .edit-btn,
+      .delete-btn {
+        padding: 5px 10px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .edit-btn {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .delete-btn {
+        background-color: #f44336;
+        color: white;
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        max-width: 500px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: black;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .form-actions {
+        text-align: right;
+        margin-top: 20px;
+      }
+
+      .save-btn {
+        background-color: #4caf50;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .cancel-btn {
+        background-color: #f44336;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      .modal-title {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .modal-image-preview {
+        max-width: 100px;
+        max-height: 100px;
+        margin: 10px 0;
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <div class="admin-container">
@@ -39,50 +157,106 @@
             <a href="../Message/message.html"
               ><i class="fa-solid fa-envelope"></i> Messages</a
             >
+          </li>
+        </ul>
       </aside>
 
-    <div class="main-section">
-      <header class="admin-header">
-        <h1></h1>
-        <div class="admin-actions">
-          <i class="fa-solid fa-bell"></i>
-          <i class="fa-solid fa-user-circle"></i>
-        </div>
-      </header>
-
-     <main class="admin-content">
-      <h2 class="section-title">Барааны ангилал</h2>
-      <div class="category-section">
-        <div class="dropdown">
-          <button class="dropdown-button" onclick="toggleDropdown()">Ангилал ▼</button>
-          <div id="dropdown-menu" class="dropdown-menu">
-            <div class="dropdown-category" onclick="filterItems('Гутал')">Гутал</div>
-            <div class="dropdown-category" onclick="filterItems('Цамц')">Цамц</div>
+      <div class="main-section">
+        <header class="admin-header">
+          <h1></h1>
+          <div class="admin-actions">
+            <a href="../Login/Login.html"
+              ><i class="fa-solid fa-right-from-bracket"></i
+            ></a>
           </div>
-        </div>
-        <button class="add-button" onclick="window.location.href = '../AddItem/additem.html'">Нэмэх</button>
-      </div>
+        </header>
 
-      <div class="table-card">
-        <table>
-          <thead>
-            <tr>
-              <th>№</th>
-              <th>Нэр</th>
-              <th>Үнэ</th>
-              <th>Үйлдэл</th>
-            </tr>
-          </thead>
-          <tbody id="itemTableBody">
-            <!-- Dynamic items will be inserted here -->
-          </tbody>
-        </table>
-      </div>
-    </main>
+        <main class="admin-content">
+          <h2 class="section-title">Барааны ангилал</h2>
+          <div class="category-section">
+            <div class="dropdown">
+              <button class="dropdown-button" onclick="toggleDropdown()">
+                Ангилал ▼
+              </button>
+              <div id="dropdown-menu" class="dropdown-menu">
+                <div class="dropdown-category" onclick="filterItems('Гутал')">
+                  Гутал
+                </div>
+                <div class="dropdown-category" onclick="filterItems('Цамц')">
+                  Цамц
+                </div>
+                <div class="dropdown-category" onclick="filterItems('all')">
+                  Бүгд
+                </div>
+              </div>
+            </div>
+            <button
+              class="add-button"
+              onclick="window.location.href = '../AddItem/additem.html'"
+            >
+              Нэмэх
+            </button>
+          </div>
+
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th>Зураг</th>
+                  <th>Нэр</th>
+                  <th>Үнэ</th>
+                  <th>Үйлдэл</th>
+                </tr>
+              </thead>
+              <tbody id="itemBody"></tbody>
+            </table>
+          </div>
+        </main>
 
         <footer class="admin-footer">
           <p>&copy; 2025 Online Shop Admin.</p>
         </footer>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="modal-title">Бараа засах</h2>
+        <form id="editForm">
+          <input type="hidden" id="editItemId" />
+          <div class="form-group">
+            <label for="editName">Нэр:</label>
+            <input type="text" id="editName" required />
+          </div>
+          <div class="form-group">
+            <label for="editCategory">Ангилал:</label>
+            <select id="editCategory" required>
+              <option value="Гутал">Гутал</option>
+              <option value="Цамц">Цамц</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editPrice">Үнэ:</label>
+            <input type="text" id="editPrice" required />
+          </div>
+          <div class="form-group">
+            <label for="editImage">Зурагны URL:</label>
+            <input type="text" id="editImage" />
+            <img
+              id="imagePreview"
+              class="modal-image-preview"
+              src=""
+              alt="Зураг"
+            />
+          </div>
+          <div class="form-actions">
+            <button type="button" class="cancel-btn">Цуцлах</button>
+            <button type="submit" class="save-btn">Хадгалах</button>
+          </div>
+        </form>
       </div>
     </div>
 

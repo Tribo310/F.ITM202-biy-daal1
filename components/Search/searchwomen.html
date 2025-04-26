@@ -42,7 +42,7 @@
       body {
         background-color: var(--bg-color);
         color: var(--primary-color);
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         margin: 0;
         padding: 0;
       }
@@ -250,16 +250,23 @@
     </style>
   </head>
   <body>
-
     <!-- TOP NAV WITH JORDAN & CONVERSE -->
     <nav>
       <div class="top_bar_container">
         <div class="header_left">
           <a href="#">
-            <img class="jordan_logo" src="../../assets/icons8-air-jordan.svg" alt="Air Jordan logo" />
+            <img
+              class="jordan_logo"
+              src="../../assets/icons8-air-jordan.svg"
+              alt="Air Jordan logo"
+            />
           </a>
           <a href="#">
-            <img class="convers_logo" src="https://logohistory.net/wp-content/uploads/2023/07/Converse-Logo.png" alt="Converse logo" />
+            <img
+              class="convers_logo"
+              src="https://logohistory.net/wp-content/uploads/2023/07/Converse-Logo.png"
+              alt="Converse logo"
+            />
           </a>
         </div>
         <div class="header_right">
@@ -273,12 +280,13 @@
 
     <header>
       <div class="logo">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
-          alt="Nike Logo"
-        />
+        <a href="../nuur/nuur.html">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
+            alt="Nike Logo"
+        /></a>
       </div>
-      
+
       <div class="search-bar">
         <input
           type="text"
@@ -288,7 +296,9 @@
         />
       </div>
       <nav>
-        <a href="#" onclick="showCart()">Cart (<span id="cart-count">0</span>)</a>
+        <a href="#" onclick="showCart()"
+          >Cart (<span id="cart-count">0</span>)</a
+        >
       </nav>
     </header>
 
@@ -308,7 +318,7 @@
 
       <div class="products" id="product-list"></div>
 
-      <div id="cart" style="display:none;">
+      <div id="cart" style="display: none">
         <h2>Your Cart</h2>
         <ul id="cart-items"></ul>
         <button onclick="clearCart()">Clear Cart</button>
@@ -345,7 +355,7 @@
           category: "Basketball",
           price: 200,
           image: "../../assets/sanchir3.png",
-        }
+        },
       ];
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -368,7 +378,7 @@
 
       function realTimeSearch() {
         const query = document.getElementById("search").value.toLowerCase();
-        const filteredProducts = products.filter(product =>
+        const filteredProducts = products.filter((product) =>
           product.name.toLowerCase().includes(query)
         );
         displayProducts(filteredProducts);
@@ -397,9 +407,10 @@
       }
 
       function filterCategory(category) {
-        const filteredProducts = category === 'all' 
-          ? products 
-          : products.filter(product => product.category === category);
+        const filteredProducts =
+          category === "all"
+            ? products
+            : products.filter((product) => product.category === category);
         displayProducts(filteredProducts);
       }
 
@@ -407,7 +418,7 @@
         cart = [];
         localStorage.setItem("cart", JSON.stringify(cart));
         updateCartCount();
-        document.getElementById("cart-items").innerHTML = '';
+        document.getElementById("cart-items").innerHTML = "";
       }
 
       displayProducts(products); // Display all products initially

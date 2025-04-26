@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: solid 5px;
+  border: solid 5px none;
   border-radius: 20px;
   padding: 40px;
   margin: 60px;

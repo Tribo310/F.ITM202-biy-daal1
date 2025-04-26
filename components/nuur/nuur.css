@@ -278,6 +278,7 @@ footer {
   padding: 0;
 }
 /* Main dropdown menu container */
+
 .dropdown-menu {
   background-color: #1f1f21;
   padding: 10px 10px;
@@ -311,15 +312,17 @@ footer {
 /* Dropdown content box */
 .dropdown-content {
   position: fixed;
-  top: 100px; /* header-аас доош байрлал */
+  display: flex;
+  justify-content: center;
+  margin: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgb(0, 0, 0);
+  background-color: #2e2e30;
   padding: 20px;
   z-index: 999;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: none;
-  min-width: 800px;
+  width: 100%;
 }
 
 .dropdown-menu li {
@@ -347,6 +350,8 @@ footer {
 }
 
 .dropdown-column a {
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: #fff;
   font-size: 13px;

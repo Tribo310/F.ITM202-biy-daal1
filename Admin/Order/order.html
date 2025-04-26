@@ -12,6 +12,74 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <style>
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 800px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: black;
+      }
+
+      .products-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .products-table th,
+      .products-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .products-table th {
+        background-color: #f2f2f2;
+      }
+
+      .view-products-btn {
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .view-products-btn:hover {
+        background-color: #0b7dda;
+      }
+    </style>
   </head>
   <body>
     <div class="admin-container">
@@ -47,8 +115,9 @@
         <header class="admin-header">
           <h1></h1>
           <div class="admin-actions">
-            <i class="fa-solid fa-bell"></i>
-            <i class="fa-solid fa-user-circle"></i>
+            <a href="../Login/Login.html"
+              ><i class="fa-solid fa-right-from-bracket"></i
+            ></a>
           </div>
         </header>
 
@@ -77,6 +146,337 @@
       </div>
     </div>
 
-    <script src="./order.js"></script>
+    <!-- Products Modal -->
+    <div
+      id="productsModal"
+      class="modal"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div
+        class="modal-content"
+        style="
+          background-color: #fff;
+          margin: 5% auto;
+          padding: 20px;
+          border: 1px solid #ddd;
+          width: 80%;
+          max-width: 800px;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          max-height: 80vh;
+          overflow-y: auto;
+        "
+      >
+        <span
+          class="close"
+          onclick="closeModal()"
+          style="
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+          >&times;</span
+        >
+
+        <h2 style="color: #2c3e50; margin-bottom: 1rem">Order Details</h2>
+
+        <div
+          id="orderDetails"
+          class="order-details"
+          style="
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+          "
+        >
+          <!-- Order info dynamically inserted here -->
+        </div>
+
+        <h3 style="color: #2c3e50; margin-bottom: 1rem">Products</h3>
+        <table
+          id="productsTable"
+          style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem"
+        >
+          <thead>
+            <tr style="background-color: #f9f9f9">
+              <th
+                style="
+                  padding: 12px;
+                  text-align: left;
+                  border-bottom: 1px solid #eee;
+                  color: #333;
+                  font-weight: 600;
+                "
+              >
+                #
+              </th>
+              <th
+                style="
+                  padding: 12px;
+                  text-align: left;
+                  border-bottom: 1px solid #eee;
+                  color: #333;
+                  font-weight: 600;
+                "
+              >
+                Бүтээгдэхүүн
+              </th>
+              <th
+                style="
+                  padding: 12px;
+                  text-align: left;
+                  border-bottom: 1px solid #eee;
+                  color: #333;
+                  font-weight: 600;
+                "
+              >
+                Тоо хэмжээ
+              </th>
+              <th
+                style="
+                  padding: 12px;
+                  text-align: left;
+                  border-bottom: 1px solid #eee;
+                  color: #333;
+                  font-weight: 600;
+                "
+              >
+                Үнэ
+              </th>
+              <th
+                style="
+                  padding: 12px;
+                  text-align: left;
+                  border-bottom: 1px solid #eee;
+                  color: #333;
+                  font-weight: 600;
+                "
+              >
+                Нийт
+              </th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody" style="border-bottom: 1px solid #eee">
+            <!-- Product rows inserted here -->
+          </tbody>
+        </table>
+
+        <h3 style="color: #2c3e50; margin-bottom: 0.5rem">
+          Захиалгын төрлийг өөрчлөх
+        </h3>
+        <select
+          id="orderStatusSelect"
+          style="
+            padding: 8px;
+            width: 100%;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+          "
+        >
+          <option value="Payment made">Payment made</option>
+          <option value="Shipped">Shipped</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+
+        <h3 style="color: #2c3e50; margin-bottom: 0.5rem">Тэмдэглэл нэмэх</h3>
+        <textarea
+          id="orderNote"
+          placeholder="Write a note..."
+          rows="4"
+          style="
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+          "
+        ></textarea>
+
+        <button
+          onclick="saveNote()"
+          style="
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+          "
+        >
+          Хадгалах
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Sample order data
+      const orders = [
+        {
+          id: 1,
+          orderNumber: "ORD-2023-001",
+          customer: "Бат",
+          total: "150,000₮",
+          status: "Хүргэгдсэн",
+          products: [
+            {
+              name: "Air Force",
+              quantity: 1,
+              price: "100,000₮",
+              total: "100,000₮",
+              image: "../.././assets/image2.png",
+            },
+            {
+              name: "Цамц",
+              quantity: 2,
+              price: "25,000₮",
+              total: "50,000₮",
+              image: "../.././assets/moojig3.png",
+            },
+          ],
+        },
+        {
+          id: 2,
+          orderNumber: "ORD-2023-002",
+          customer: "Сараа",
+          total: "75,000₮",
+          status: "Бэлтгэгдэж байна",
+          products: [
+            {
+              name: "Гутал",
+              quantity: 1,
+              price: "75,000₮",
+              total: "75,000₮",
+              image: "../.././assets/image1.png",
+            },
+          ],
+        },
+        {
+          id: 3,
+          orderNumber: "ORD-2023-003",
+          customer: "Төгөлдөр",
+          total: "200,000₮",
+          status: "Хүргэлтэнд гарсан",
+          products: [
+            {
+              name: "Жинс",
+              quantity: 1,
+              price: "120,000₮",
+              total: "120,000₮",
+              image: "../.././assets/moojig4.png",
+            },
+            {
+              name: "Цамц",
+              quantity: 1,
+              price: "40,000₮",
+              total: "40,000₮",
+              image: "../.././assets/moojig5.png",
+            },
+            {
+              name: "Гутал",
+              quantity: 1,
+              price: "40,000₮",
+              total: "40,000₮",
+              image: "../.././assets/image5.png",
+            },
+          ],
+        },
+      ];
+
+      // Initialize the table
+      document.addEventListener("DOMContentLoaded", function () {
+        const tableBody = document.getElementById("itemTableBody");
+
+        orders.forEach((order, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${order.orderNumber}</td>
+            <td>${order.customer}</td>
+            <td>${order.total}</td>
+            <td>${order.status}</td>
+            <td>${order.products.length} бүтээгдэхүүн</td>
+            <td><button class="view-products-btn" onclick="viewProducts(${
+              order.id
+            })">Харах</button></td>
+          `;
+          tableBody.appendChild(row);
+        });
+      });
+
+      // View products function
+      function viewProducts(orderId) {
+        const order = orders.find((o) => o.id === orderId);
+        if (!order) return;
+
+        const modal = document.getElementById("productsModal");
+        const orderDetails = document.getElementById("orderDetails");
+        const productsBody = document.getElementById("productsTableBody");
+
+        // Set order details
+        orderDetails.innerHTML = `
+          <p><strong>Захиалгын дугаар:</strong> ${order.orderNumber}</p>
+          <p><strong>Үйлчлүүлэгч:</strong> ${order.customer}</p>
+          <p><strong>Нийт дүн:</strong> ${order.total}</p>
+          <p><strong>Төлөв:</strong> ${order.status}</p>
+        `;
+
+        // Clear previous products
+        productsBody.innerHTML = "";
+
+        // Add products to table
+        order.products.forEach((product, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = ` 
+            <td>${index + 1}</td>
+            <td>
+              <div class="product-name-container">
+                <img src="${product.image}" alt="${
+            product.name
+          }" class="item-image">
+                ${product.name}
+              </div>
+            </td>
+            <td>${product.quantity}</td>
+            <td>${product.price}</td>
+            <td>${product.total}</td>
+          `;
+          productsBody.appendChild(row);
+        });
+
+        // Show modal
+        modal.style.display = "block";
+      }
+
+      // Close modal when clicking X
+      document.querySelector(".close").onclick = function () {
+        document.getElementById("productsModal").style.display = "none";
+      };
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("productsModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
   </body>
 </html>
