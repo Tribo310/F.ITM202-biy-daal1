@@ -215,33 +215,27 @@ footer {
   height: 1000px;
 }
 
-.footer-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+footer {
+  background-color: #111;
+  padding: 2rem 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-
-.footer-heading {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #fff;
+.main_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
-.footer-list {
-  list-style: none;
+.sub_footer {
+  display: flex;
 }
-
-.footer-item {
-  margin-bottom: 0.8rem;
-}
-
-.footer-link {
-  color: #ccc;
-  justify-content: flex-start;
-}
-
-.footer-link:hover {
-  color: #fff;
+.sub_footer ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  width: 100%;
+  justify-content: space-between;
 }
 .search_section_button {
   display: flex;
